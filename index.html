@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Производство Дальневосточного мёда и продажа по всей России</title>
+    <!--<link rel="stylesheet" href="css/style.css" media="all">-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+    <!--<script src="js/js.js"></script>-->
+    <link rel="stylesheet" href="css/reset.css">
+
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+</head>
+<body class="body">
+
+<style>
+    html, body {
+        height: 100%;
+        font-family: roboto;
+    }
+
+    .main{
+        background-color: #593957;
+        display: flex;
+        min-height: 100%;
+        padding: 0 20px 20px 20px;
+        box-sizing: border-box;
+        flex-direction: column;
+        position: relative;
+    }
+
+    /*липа*/
+    .main:before{
+        content: '';
+        width: 170px;
+        height: 150px;
+        background: url("i/lipa.png") no-repeat center center;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .header{
+        min-height: 100px;
+        display: flex;
+        /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+        flex: 0 0 auto;
+        align-items: center;
+        position: relative;
+    }
+    
+    .box{
+        background-color: #fff;
+        /* 1 flex-grow, 0 flex-shrink, auto flex-basis */
+        flex: 1 0 auto;
+    }
+    
+    .footer{
+        background-color: #f0f4ff;
+        /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+        flex: 0 0 auto;
+        padding: 50px;
+    }
+
+    /**/
+    .header__logo{
+        /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+        flex: 0 0 auto;
+    }
+
+    .header__title{
+        /* 0 flex-grow, 0 flex-shrink, content flex-basis */
+        flex: 0 0 0;
+        font-size: calc((15/16)*1rem);
+        color: #f89d18;
+        padding: 10px;
+        box-sizing: border-box;
+        line-height: 120%;
+        border: 1px solid #f89d18;
+        margin-left:20px;
+    }
+
+    .header__title strong{
+        white-space: nowrap
+    }
+
+    .header__nav{
+        /* 1 flex-grow, 0 flex-shrink, auto flex-basis */
+        flex: 1 0 auto;
+        display: flex;
+        list-style: none;
+        margin-left: 25px;
+    }
+
+    .header__nav li{
+        min-height: 100px;
+        align-items: center;
+        display:flex;
+    }
+
+    .header__nav li a{
+        font-size: calc((20/16)*1rem);
+        color: #fff;
+        text-decoration: none;
+        padding: 25px;
+        display: block;
+        transition: 0.5s;
+    }
+
+    .header__nav li a:hover{
+        /*background: rgba(255,255,255, 0.1);*/
+        color:#f89d18
+    }
+
+    .header__nav-paseka{
+        background: url("i/bee.png") no-repeat center 10px;
+    }
+
+    .header__cart{
+        /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+        flex: 0 0 auto;
+    }
+
+    .header__user{
+        display: flex;
+        background: rgba(255,255,255, 0.1);
+        padding: 10px;
+        align-items: center;
+    }
+
+    .header__user-avatar{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+    }
+
+
+
+    .header__user a{
+        color: #fff;
+        font-size: calc((20/16)*1rem);
+        text-decoration: none;
+        margin-left: 10px;
+    }
+
+
+</style>
+
+<div class="main">
+
+    <header class="header">
+
+        <div class="header__logo"><a href="https://the-honey.ru/"><img src="i/logo.png" alt="The &laquo;Мёд&raquo;"></a></div>
+
+        <div class="header__title"><strong>Производство Дальневосточного мёда</strong> и продажа по всей России</div>
+
+        <nav class="header__nav">
+            <li><a href="#">Мёд</a></li>
+            <li><a href="#">Доставка</a></li>
+            <li><a href="#">Блог</a></li>
+            <li class="header__nav-paseka"><a href="#">Пасека</a></li>
+            <li><a href="#">Контакты</a></li>
+        </nav>
+
+        <div class="header__cart"><a href="#/cart/">1600 &#8381;</a></div>
+
+        <div class="header__user"><div class="header__user-avatar"><img src="i/ava-2.png" alt="Юрий"></div><a href="#/user/profile/">Юрий Юрков</a></div>
+
+    </header>
+
+
+
+
+    <section class="box">
+        box
+    </section>
+
+    <footer class="footer">
+        footer
+    </footer>
+
+</div>
+
+
+</body>
+</html>
