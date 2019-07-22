@@ -22,30 +22,19 @@
         background-color: #593957;
         display: flex;
         min-height: 100%;
-        padding: 0 20px 20px 20px;
         box-sizing: border-box;
         flex-direction: column;
         position: relative;
     }
 
-    /*липа*/
-    .main:before{
-        content: '';
-        width: 170px;
-        height: 150px;
-        background: url("i/lipa.png") no-repeat center center;
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
-
     .header{
-        min-height: 100px;
+        min-height: 80px;
         display: flex;
         /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
         flex: 0 0 auto;
         align-items: center;
         position: relative;
+        padding: 0 20px;
     }
     
     .box{
@@ -62,21 +51,19 @@
     }
 
     /**/
-    .header__logo{
+   .header__logo{
         /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
         flex: 0 0 auto;
     }
 
     .header__title{
-        /* 0 flex-grow, 0 flex-shrink, content flex-basis */
+        font-weight: 300;
         flex: 0 0 0;
         font-size: calc((15/16)*1rem);
-        color: #f89d18;
-        /*padding: 10px;*/
+        color: rgba(255,255,255, .75);
         box-sizing: border-box;
-        line-height: 120%;
-        /*border: 1px solid #f89d18;*/
-        margin-left:20px;
+        line-height: 100%;
+        margin-left: 20px;
     }
 
     .header__title strong{
@@ -89,31 +76,38 @@
         display: flex;
         list-style: none;
         margin-left: 25px;
+        border-left: 1px solid #836b81;
+        padding-left: 20px;
     }
 
     .header__nav li{
-        min-height: 100px;
+        min-height: 80px;
         align-items: center;
         display:flex;
+        padding: 0 20px;
     }
 
+
     .header__nav li a{
-        font-size: calc((20/16)*1rem);
+        font-size: calc((15/16)*1rem);
         color: #fff;
         text-decoration: none;
-        padding: 25px;
         display: block;
         transition: 0.5s;
+        display: block;
+        border-bottom: 1px solid #fff;
+        padding-bottom: 2px;
     }
 
     .header__nav li a:hover{
         /*background: rgba(255,255,255, 0.1);*/
-        color:#f89d18
+        color:#f89d18;
+        border-color:#f89d18;
     }
 
-    .header__nav-paseka{
-        background: url("i/bee.png") no-repeat center 10px;
-    }
+    /*.header__nav-paseka{*/
+        /*background: url("i/bee.png") no-repeat center 10px;*/
+    /*}*/
 
     .header__cart{
         /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
@@ -150,16 +144,14 @@
 <div class="main">
 
     <header class="header">
-
-        <div class="header__logo"><a href="https://the-honey.ru/"><img src="i/logo.png" alt="The &laquo;Мёд&raquo;"></a></div>
-
-        <div class="header__title"><strong>Производство Дальневосточного мёда</strong> и продажа по всей России</div>
+            <div class="header__logo"><a href="https://the-honey.ru/"><img src="i/logo-60.png" alt="The &laquo;Мёд&raquo;"></a></div>
+            <div class="header__title"><strong>Производство Дальневосточного мёда</strong> и продажа по всей России</div>
 
         <nav class="header__nav">
-            <li><a href="#">Мёд</a></li>
+            <li><a href="#">The Мёд</a></li>
             <li><a href="#">Доставка</a></li>
             <li><a href="#">Блог</a></li>
-            <li class="header__nav-paseka"><a href="#">Пасека</a></li>
+            <li><a href="#">Пасеки</a></li>
             <li><a href="#">Контакты</a></li>
         </nav>
 
