@@ -19,7 +19,7 @@
     }
 
     .main{
-        background-color: #593957;
+        background-color: #633758;
         display: flex;
         min-height: 100%;
         box-sizing: border-box;
@@ -34,7 +34,6 @@
         flex: 0 0 auto;
         align-items: center;
         position: relative;
-        padding: 0 20px;
     }
     
     .box{
@@ -56,27 +55,14 @@
         flex: 0 0 auto;
     }
 
-    .header__title{
-        font-weight: 300;
-        flex: 0 0 0;
-        font-size: calc((15/16)*1rem);
-        color: rgba(255,255,255, .75);
-        box-sizing: border-box;
-        line-height: 100%;
-        margin-left: 20px;
-    }
-
-    .header__title strong{
-        white-space: nowrap
-    }
 
     .header__nav{
         /* 1 flex-grow, 0 flex-shrink, auto flex-basis */
         flex: 1 0 auto;
         display: flex;
         list-style: none;
-        margin-left: 25px;
-        border-left: 1px solid #836b81;
+
+        border-left: 1px solid #8c6b83;
         padding-left: 20px;
     }
 
@@ -101,13 +87,9 @@
 
     .header__nav li a:hover{
         /*background: rgba(255,255,255, 0.1);*/
-        color:#f89d18;
-        border-color:#f89d18;
+        color:#ff9f00;
+        border-color:#ff9f00;
     }
-
-    /*.header__nav-paseka{*/
-        /*background: url("i/bee.png") no-repeat center 10px;*/
-    /*}*/
 
     .header__cart{
         /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
@@ -116,9 +98,14 @@
 
     .header__user{
         display: flex;
-        background: rgba(255,255,255, 0.1);
         padding: 10px;
         align-items: center;
+        margin-right: 20px;
+    }
+
+    .header__user:hover{
+        background: rgba(255,255,255, 0.1);
+        cursor: pointer;
     }
 
     .header__user-avatar{
@@ -129,14 +116,50 @@
         display: flex;
     }
 
-
-
     .header__user a{
         color: #fff;
-        font-size: calc((20/16)*1rem);
+        font-size: calc((15/16)*1rem);
         text-decoration: none;
         margin-left: 10px;
     }
+
+
+    /* header title*/
+    .header__title{
+        display: flex;
+        flex: 0 0 0;
+        min-height: 80px;
+        align-items: center;
+        position: relative;
+        padding: 0 20px;
+        border-right: 1px solid #362035;
+    }
+
+    .header__title-descript{
+        font-weight: 300;
+        font-size: calc((15/16)*1rem);
+        color: rgba(255,255,255, .75);
+        box-sizing: border-box;
+        line-height: 100%;
+        margin-left: 20px;
+    }
+
+    .header__title strong{
+        white-space: nowrap
+    }
+
+    .header__title a{
+        display: block;
+        position: absolute;
+        top: 0;left:0;right:0;bottom:0;
+    }
+
+    .header__title:hover{
+        background-color: #3a1a33;
+    }
+
+    /**/
+
 
 
 </style>
@@ -144,8 +167,12 @@
 <div class="main">
 
     <header class="header">
-            <div class="header__logo"><a href="https://the-honey.ru/"><img src="i/logo-60.png" alt="The &laquo;Мёд&raquo;"></a></div>
-            <div class="header__title"><strong>Производство Дальневосточного мёда</strong> и продажа по всей России</div>
+
+        <ul class="header__title">
+            <a href="https://the-honey.ru/"></a>
+            <li class="header__title-logo"><img src="i/logo-60.png" alt="The &laquo;Мёд&raquo;"></li>
+            <li class="header__title-descript"><strong>Производство Дальневосточного мёда</strong> и продажа по всей России</li>
+        </ul>
 
         <nav class="header__nav">
             <li><a href="#">The Мёд</a></li>
