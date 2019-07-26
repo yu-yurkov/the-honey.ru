@@ -93,7 +93,52 @@
 
     .header__cart{
         /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
-        flex: 0 0 auto;
+        display: flex;
+        padding: 10px;
+        align-items: center;
+        transition: .5s;
+        position: relative;
+        border-radius: 5px;
+    }
+
+    .header__cart:before{
+        content: '';
+        display: block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #fff url("i/cart.png") no-repeat center center;
+    }
+
+    .header__cart-quantity{
+        background-color: #c10032;
+        box-sizing: border-box;
+        font-size: calc((14/16)*1rem);
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        width: 25px;
+        height:25px;
+        border-radius: 50%;
+        padding-left: 1px;
+        color: #fff;
+        top:10px;
+        left:35px;
+
+    }
+    .header__cart a{
+        color: #fff;
+        font-size: calc((15/16)*1rem);
+        text-decoration: none;
+        margin-left: 20px;
+
+    }
+
+    .header__cart:hover{
+        background: rgba(255,255,255, 0.1);
+        cursor: pointer;
     }
 
     .header__user{
@@ -101,6 +146,8 @@
         padding: 10px;
         align-items: center;
         margin-right: 20px;
+        transition: .5s;
+        border-radius: 5px;
     }
 
     .header__user:hover{
@@ -114,6 +161,9 @@
         border-radius: 50%;
         overflow: hidden;
         display: flex;
+        background-color: #fff;
+        background-image: url("i/ava.png");
+        background-position: center center;
     }
 
     .header__user a{
@@ -121,6 +171,7 @@
         font-size: calc((15/16)*1rem);
         text-decoration: none;
         margin-left: 10px;
+
     }
 
 
@@ -133,6 +184,7 @@
         position: relative;
         padding: 0 20px;
         border-right: 1px solid #362035;
+        transition: .5s;
     }
 
     .header__title-descript{
@@ -182,9 +234,13 @@
             <li><a href="#">Контакты</a></li>
         </nav>
 
-        <div class="header__cart"><a href="#/cart/">1600 &#8381;</a></div>
 
+        <!--<div class="header__cart"></div>-->
+        <!--<div class="header__user"><div class="header__user-avatar"></div></div>-->
+<!---->
+        <div class="header__cart"><span class="header__cart-quantity">2</span> <a href="#/cart/">1600 &#8381;</a></div>
         <div class="header__user"><div class="header__user-avatar"><img src="i/ava-2.png" alt="Юрий"></div><a href="#/user/profile/">Юрий Юрков</a></div>
+
 
     </header>
 
