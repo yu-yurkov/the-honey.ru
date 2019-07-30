@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+
+<style>
+
+    .dropdown{
+        background: tomato;
+        display: none;
+    }
+
+    .slidein{
+        display: block;
+    }
+
+    .parent_block {
+        width: 200px;
+        height: 100px;
+    }
+    .button {
+        width: 200px;
+        height: 50px;
+        background: #00BB65;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    .toggled_block {
+        width: 200px;
+        height: 50px;
+        background: #fff;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        display: none;
+    }
+
+</style>
+
+    <div class="box">
+
+        <a href="#" class="drop">Показать блок</a>
+
+        <div class="dropdown">
+            скрытый блок
+        </div>
+
+    </div>
+
+
+<div class="parent_block">
+    <div class="button"></div>
+    <div class="toggled_block drop"></div>
+</div>
+
+
+<script>
+
+    $(".button").click(function() {
+        $(this).siblings('.drop').toggle();
+    });
+
+
+
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest(".parent_block").length) {
+            $('.toggled_block').hide();
+        }
+        e.stopPropagation();
+    });
+    
+    $('body').on('click','.drop', function () {
+        $(this).siblings('.dropdown').toggleClass('slidein');
+    })
+
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest(".slideid").length) {
+            $('.dropdown').removeClass('slidein');
+        }
+        e.stopPropagation();
+    });
+    
+</script>
+
+
+</body>
+</html>

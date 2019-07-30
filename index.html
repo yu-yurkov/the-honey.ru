@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Производство Дальневосточного мёда и продажа по всей России</title>
     <!--<link rel="stylesheet" href="css/style.css" media="all">-->
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!--<script src="js/js.js"></script>-->
     <link rel="stylesheet" href="css/reset.css">
 
@@ -128,7 +128,7 @@
         left:35px;
 
     }
-    .header__cart a{
+    .header__cart-link{
         color: #fff;
         font-size: calc((15/16)*1rem);
         text-decoration: none;
@@ -143,6 +143,7 @@
 
     .header__user{
         display: flex;
+        position: relative;
         padding: 10px;
         align-items: center;
         margin-right: 20px;
@@ -214,6 +215,171 @@
 
 
 
+    /* dropdown */
+    .dropdown{
+        border: 1px solid #593957;
+        position: absolute;
+        top: 80px;
+        right: 0;
+        display: none;
+        width: 350px;
+        background: #fff;
+        -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+        -moz-box-shadow:    0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+        box-shadow:         0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+
+    }
+
+    /**/
+    .box .dropdown{
+        position: relative;
+        display: none;
+        margin: 100px auto;
+        min-width: 350px;
+        padding: 0;
+    }
+
+
+    .slidein {
+        -webkit-animation-duration: .5s;
+        -moz-animation-duration: .5s;
+        animation-duration: .5s;
+        -moz-animation-name: slidein;
+        -webkit-animation-name: slidein;
+        animation-name: slidein;
+        -moz-animation-iteration-count: 1;
+        -webkit-animation-iteration-count: 1;
+        animation-iteration-count: 1;
+        -moz-animation-direction: alternate;
+        -webkit-animation-direction: alternate;
+        animation-direction: alternate;
+        display: block;
+    }
+
+
+    @keyframes slidein {
+        0% {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        60% {
+            opacity: 1;
+            transform: translateY(20px);
+        }
+        80% {
+            transform: translateY(-10px);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+
+    /* userdata */
+    .user-data{
+        background: #f0f4ff;
+        border-bottom: 1px solid #e3e7f2;
+        display: flex;
+        padding: 20px;
+
+    }
+
+    .user-photo{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    .user-photo img{
+        width: 100%;
+        height: auto;
+    }
+
+    .user-info{
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .user-name{
+        font-weight: bold;
+        font-size: calc((16/16)*1rem);
+        margin-bottom: 5px;
+    }
+
+    .user-contacts{
+        color: #787a80;
+        font-size: calc((12/16)*1rem);
+        padding: 2px 0;
+    }
+
+    .header .user-edit-link>a{
+        color: #2e7dff;
+        font-size: calc((12/16)*1rem);
+        text-decoration: underline;
+        margin: 0;
+    }
+
+    .header .user-edit-link{
+        margin-top: 5px;
+    }
+
+    .logout a{
+        display: block;
+        color: #787a80;
+        text-transform: uppercase;
+        font-size: calc((12/16)*1rem);
+        letter-spacing: 5px;
+        padding: 0;
+        line-height: 40px;
+        margin: 0;
+        text-align: center;
+        background: #f0f4ff;
+        border-top: 1px solid #e3e7f2;
+        transition: .5s;
+    }
+
+    .logout a:hover{
+        background-color: #e5ecff;
+    }
+
+    .logout{
+        position: absolute;
+        bottom: 0;
+        left:0;
+        width: 100%;
+    }
+
+    .widget-orders{
+        margin-bottom: 61px;
+    }
+
+    .widget-orders h3{
+        font-weight: bold;
+        font-size: calc((18/16)*1rem);
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .widget-orders p{
+        font-weight: 300;
+        font-size: calc((16/16)*1rem);
+        text-align: center;
+        color: #787a80;
+    }
+
+    .widget-orders a{
+
+        color: #2e7dff;
+        text-decoration: underline;
+        padding: 0;margin: 0;
+        font-size: calc((16/16)*1rem);
+    }
+
+
+
+
 </style>
 
 <div class="main">
@@ -238,8 +404,99 @@
         <!--<div class="header__cart"></div>-->
         <!--<div class="header__user"><div class="header__user-avatar"></div></div>-->
 <!---->
-        <div class="header__cart"><span class="header__cart-quantity">2</span> <a href="#/cart/">1600 &#8381;</a></div>
-        <div class="header__user"><div class="header__user-avatar"><img src="i/ava-2.png" alt="Юрий"></div><a href="#/user/profile/">Юрий Юрков</a></div>
+        <div class="header__cart">
+
+            <a href="#/cart/" class="header__cart-link"><span class="header__cart-quantity">2</span>1600 &#8381;</a>
+
+            <div class="dropdown slidein">
+
+                <div class="cart-preview">
+
+                    <ul class="cart-items-list">
+
+                        <li class="cart-item">
+
+                            <ul class="cart-item-data">
+                                <li class="cart-item__photo"><img class="cart-item__photo-img" src="i/lipa.png"></li>
+                                <li class="cart-item__descript">
+                                    <a href="#" class="cart-item__title">Мёд «Дальневосточный» липовый с ядрами кедрового ореха (взбитый), 300 гр.\12 б., пластик</a>
+                                    <span class="cart-item__price">135.00 &#8381;</span>
+                                </li>
+                                <li class="cart-item__quantity">1 шт.</li>
+                                <li class="cart-item__delete"><a href="#" class="cart-item__delete-btn"><span>x</span></a></li>
+                            </ul>
+
+                        </li>
+
+                        <li class="cart-item">
+
+                            <ul class="cart-item-data">
+                                <li class="cart-item__photo"><img class="cart-item__photo-img" src="i/lipa.png"></li>
+                                <li class="cart-item__descript">
+                                    <a href="#" class="cart-item__title">Мёд «Дальневосточный» липовый с ядрами кедрового ореха (взбитый), 300 гр.\12 б., пластик</a>
+                                    <span class="cart-item__price">135.00 &#8381;</span>
+                                </li>
+                                <li class="cart-item__quantity">1 шт.</li>
+                                <li class="cart-item__delete"><a href="#" class="cart-item__delete-btn"><span>x</span></a></li>
+                            </ul>
+
+                        </li>
+
+                        <li class="cart-item">
+
+                            <ul class="cart-item-data">
+                                <li class="cart-item__photo"><img class="cart-item__photo-img" src="i/lipa.png"></li>
+                                <li class="cart-item__descript">
+                                    <a href="#" class="cart-item__title">Мёд «Дальневосточный» липовый с ядрами кедрового ореха (взбитый), 300 гр.\12 б., пластик</a>
+                                    <span class="cart-item__price">135.00 &#8381;</span>
+                                </li>
+                                <li class="cart-item__quantity">1 шт.</li>
+                                <li class="cart-item__delete"><a href="#" class="cart-item__delete-btn"><span>x</span></a></li>
+                            </ul>
+
+                        </li>
+
+                        <li class="cart-item">
+
+                            <ul class="cart-item-data">
+                                <li class="cart-item__photo"><img class="cart-item__photo-img" src="i/lipa.png"></li>
+                                <li class="cart-item__descript">
+                                    <a href="#" class="cart-item__title">Мёд «Дальневосточный» липовый с ядрами кедрового ореха (взбитый), 300 гр.\12 б., пластик</a>
+                                    <span class="cart-item__price">135.00 &#8381;</span>
+                                </li>
+                                <li class="cart-item__quantity">1 шт.</li>
+                                <li class="cart-item__delete"><a href="#" class="cart-item__delete-btn"><span>x</span></a></li>
+                            </ul>
+
+                        </li>
+
+
+
+
+                    </ul>
+
+                    <ul class="cart-total">
+                        <li class="cart-total-title">Итого:</li>
+                        <li class="cart-total-summ"><b>1350.00 &#8381;</b></li>
+                    </ul>
+
+                    <ul class="cart-checkout">
+                        <li class="cart-checkout-btn"><a href="#" class="btn checkout-btn">Оформить заказ</a></li>
+                    </ul>
+
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="header__user dropdown-box">
+            <div class="header__user-avatar"><img src="i/ava-2.png" alt="Юрий"></div>
+            <a href="#/user/profile/">Юрий Юрков</a>
+        </div>
 
 
     </header>
@@ -248,7 +505,312 @@
 
 
     <section class="box">
-        box
+
+
+        <style>
+
+            /* cart preview */
+            .cart-preview{
+                padding-top: 15px;
+            }
+
+            .cart-items-list{
+                overflow: auto;
+                max-height: 300px;
+                box-sizing: border-box;
+            }
+
+            .cart-items-list::-webkit-scrollbar-track
+            {
+                -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+                border-radius: 10px;
+                background-color: #F5F5F5;
+            }
+
+            .cart-items-list::-webkit-scrollbar
+            {
+                width: 6px;
+                background-color: #F5F5F5;
+            }
+
+            .cart-items-list::-webkit-scrollbar-thumb
+            {
+                border-radius: 10px;
+                -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+                background-color: #addff3;
+            }
+
+            .cart-item-data{
+                display: flex;
+                flex-shrink: 0;
+                align-items: center;
+                padding: 5px 20px;
+            }
+
+            .cart-item__photo-img{
+                 width: 100%;
+                 height: auto;
+            }
+
+            .cart-item__photo{
+                width: 60px;
+                height: 60px;
+                min-width: 60px;
+                min-height: 60px;
+                border: 1px solid #f0f4ff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .cart-item__descript{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding-left: 10px;
+            }
+
+            .cart-item__title{
+                text-decoration: none;
+                font-size: calc((13/16)*1rem);
+                color: #3c3a38;
+                height: 27px;
+                overflow: hidden;
+            }
+
+            .cart-item__title:hover{
+                color: #c10032;
+            }
+
+            .cart-item__price{
+                font-size: calc((13/16)*1rem);
+                color: #3c3a38;
+                font-weight: bold;
+                padding-top: 5px;
+            }
+
+            .cart-item__quantity{
+                font-size: calc((13/16)*1rem);
+                color: #3c3a38;
+                white-space: nowrap;
+            }
+
+            .cart-item__delete-btn{
+                display: block;
+                height: 30px;
+                width: 30px;
+                background: #e3e7f2 url('i/basket.png') no-repeat center center;
+                border-radius: 2px;
+                transition: .5s;
+                margin-left: 10px;
+            }
+
+            .cart-item__delete-btn:hover{
+                background-color: #c7d6ff;
+            }
+
+            .cart-item__delete-btn:active{
+                background-color: #9ea8c4;
+            }
+
+            .cart-item__delete-btn>span{
+                display: none;
+            }
+
+            /* total */
+            .cart-total{
+                border-top: 1px solid #f49a1f;
+                display: flex;
+                align-items: center;
+                padding: 20px;
+                font-weight: bold;
+                font-size: calc((14/16)*1rem);
+                margin-top: 15px;
+            }
+
+            .cart-total-summ{
+                flex-grow: 1;
+                text-align: right;
+                border-bottom: 1px dotted #bfbfbf;
+            }
+
+            .cart-total-summ>b{
+                background: #fff;
+            }
+
+
+            /* -- кнопка -- */
+            .btn{
+                background: rgb(255,255,255); /* Old browsers */
+                background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(242,242,242,1) 100%); /* FF3.6-15 */
+                background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(242,242,242,1) 100%); /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(242,242,242,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f2f2f2',GradientType=0 ); /* IE6-9 */
+                display: inline-block;
+                border: 1px solid #c1c1c1;
+                font-size: calc((14/16)*1rem);
+                line-height: calc((38/16)*1rem);
+                color: #000;
+                text-decoration: none;
+                padding: 0 10px;
+                border-radius: 5px;
+                text-shadow: 1px 1px 0px rgba(255, 255, 255, 1);
+                box-sizing: border-box;
+            }
+
+
+            .btn:hover, .button.selected{
+                -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+                -moz-box-shadow:    0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+                box-shadow:         0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+                color: #000;
+            }
+
+            .btn:active{
+                background: #f2f2f2;
+                text-shadow: none;
+            }
+
+            .cart-checkout{
+                padding: 0 20px 20px 20px;
+            }
+
+            .cart-checkout-btn{
+                text-align: center;
+            }
+
+            .btn.checkout-btn{
+                background: #c10032;
+                color: #fff;
+                text-shadow: unset;
+                border-radius: 20px;
+                border: unset;
+                font-family: Sybilla-Medium;
+                padding: 0 40px;
+            }
+
+
+
+
+        </style>
+
+
+    <div class="dropdown">
+
+        <div class="cart-preview">
+
+            <ul class="cart-items-list">
+
+                <li class="cart-item">
+
+                    <ul class="cart-item-data">
+                        <li class="cart-item__photo"><img class="cart-item__photo-img" src="i/lipa.png"></li>
+                        <li class="cart-item__descript">
+                            <a href="#" class="cart-item__title">Мёд «Дальневосточный» липовый с ядрами кедрового ореха (взбитый), 300 гр.\12 б., пластик</a>
+                            <span class="cart-item__price">135.00 &#8381;</span>
+                        </li>
+                        <li class="cart-item__quantity">1 шт.</li>
+                        <li class="cart-item__delete"><a href="#" class="cart-item__delete-btn"><span>x</span></a></li>
+                    </ul>
+
+                </li>
+
+                <li class="cart-item">
+
+                    <ul class="cart-item-data">
+                        <li class="cart-item__photo"><img class="cart-item__photo-img" src="i/lipa.png"></li>
+                        <li class="cart-item__descript">
+                            <a href="#" class="cart-item__title">Мёд «Дальневосточный» липовый с ядрами кедрового ореха (взбитый), 300 гр.\12 б., пластик</a>
+                            <span class="cart-item__price">135.00 &#8381;</span>
+                        </li>
+                        <li class="cart-item__quantity">1 шт.</li>
+                        <li class="cart-item__delete"><a href="#" class="cart-item__delete-btn"><span>x</span></a></li>
+                    </ul>
+
+                </li>
+
+                <li class="cart-item">
+
+                    <ul class="cart-item-data">
+                        <li class="cart-item__photo"><img class="cart-item__photo-img" src="i/lipa.png"></li>
+                        <li class="cart-item__descript">
+                            <a href="#" class="cart-item__title">Мёд «Дальневосточный» липовый с ядрами кедрового ореха (взбитый), 300 гр.\12 б., пластик</a>
+                            <span class="cart-item__price">135.00 &#8381;</span>
+                        </li>
+                        <li class="cart-item__quantity">1 шт.</li>
+                        <li class="cart-item__delete"><a href="#" class="cart-item__delete-btn"><span>x</span></a></li>
+                    </ul>
+
+                </li>
+
+                <li class="cart-item">
+
+                    <ul class="cart-item-data">
+                        <li class="cart-item__photo"><img class="cart-item__photo-img" src="i/lipa.png"></li>
+                        <li class="cart-item__descript">
+                            <a href="#" class="cart-item__title">Мёд «Дальневосточный» липовый с ядрами кедрового ореха (взбитый), 300 гр.\12 б., пластик</a>
+                            <span class="cart-item__price">135.00 &#8381;</span>
+                        </li>
+                        <li class="cart-item__quantity">1 шт.</li>
+                        <li class="cart-item__delete"><a href="#" class="cart-item__delete-btn"><span>x</span></a></li>
+                    </ul>
+
+                </li>
+
+
+
+
+            </ul>
+
+            <ul class="cart-total">
+                <li class="cart-total-title">Итого:</li>
+                <li class="cart-total-summ"><b>1350.00 &#8381;</b></li>
+            </ul>
+
+            <ul class="cart-checkout">
+                <li class="cart-checkout-btn"><a href="#" class="btn checkout-btn">Оформить заказ</a></li>
+            </ul>
+
+
+
+        </div>
+
+    </div>
+
+
+        <div class="dropdown">
+
+            <div class="user-data">
+
+                <div class="user-photo"><img src="i/user-photo.png"></div>
+
+                <ul class="user-info">
+                    <li class="user-name">Юрий Юрков</li>
+                    <li class="user-contacts">+7 (902) 485-76-44</li>
+                    <li class="user-contacts">info@the-honey.ru</li>
+                    <li class="user-edit-link"><a href="#/user/profile/edit/">Редактировать</a></li>
+                </ul>
+
+            </div>
+
+            <div class="widget-orders">
+
+                <h3>Мои заказы</h3>
+
+                <p>активных заказов нет,<br> <a href="#">посмотреть архив заказов</a></p>
+
+            </div>
+
+            <div class="logout">
+                <a href="#">Выйти</a>
+            </div>
+
+        </div>
+
+
+
+
+
     </section>
 
     <footer class="footer">
@@ -257,6 +819,20 @@
 
 </div>
 
+
+<script>
+
+      $('body').on('click','.dropdown-box', function (event) {
+          console.log(1);
+          $(this).children('.dropdown').toggleClass('slidein');
+       });
+
+
+
+
+
+
+</script>
 
 </body>
 </html>
