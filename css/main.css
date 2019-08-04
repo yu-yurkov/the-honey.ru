@@ -1,47 +1,37 @@
-@font-face {
-    font-family: 'Anglecia Pro Title';
-    src: url('../fonts/anglecia.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-
 html, body {
     height: 100%;
     font-family: roboto;
 }
 
-.main {
-    position: relative;
+.main{
+    background-color: #633758;
+    display: flex;
     min-height: 100%;
     box-sizing: border-box;
-    background-color: #593957;
-    padding: 0 20px 20px 20px;
+    flex-direction: column;
+    position: relative;
+}
+
+.header{
+    min-height: 80px;
+    display: flex;
+    /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+    flex: 0 0 auto;
+    align-items: center;
+    position: relative;
 }
 
 .box{
     background-color: #fff;
+    /* 1 flex-grow, 0 flex-shrink, auto flex-basis */
+    flex: 1 0 auto;
 }
 
-.wrap{
-    max-width: 1600px;
-    margin: 0 auto;
-    box-sizing: border-box;
-    padding: 0 2.5%;
-    display:flex;
-}
-
-footer{
-    background: #fafafa;
-    height: 360px;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    border-top: 1px solid #f2f2f2;
-}
-
-.column{
-    box-sizing: border-box;
+.footer{
+    background-color: #f0f4ff;
+    /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+    flex: 0 0 auto;
+    padding-bottom: 20px;
 }
 
 
