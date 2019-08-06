@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adaptive header</title>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/reset.css">
+</head>
+<body>
+
+<style>
+
+    .header__logo-svg{
+        min-width: 60px;
+        min-height: 60px;
+        max-width: 60px;
+        max-height: 60px;
+    }
+
+    .header__descript{
+        font-weight: 300;
+        font-size: calc((15/16)*1rem);
+        font-family: Sybilla-Regular;
+        color: rgba(255,255,255, 1);
+        box-sizing: border-box;
+        line-height: 100%;
+        margin-left: 20px;
+    }
+
+    .header__descript strong{
+        white-space: nowrap
+    }
+
+
+
+    .header__menu{
+        flex: 1 0 auto;
+        display: flex;
+    }
+
+    .mainMenu{
+        flex: 1 0 auto;
+        display: flex;
+        list-style: none;
+        border-left: 1px solid #8c6b83;
+        padding-left: 20px;
+    }
+
+    .mainMenu__item{
+        min-height: 80px;
+        align-items: center;
+        display:flex;
+        padding: 0 20px;
+    }
+
+
+    .mainMenu__link{
+        font-size: calc((15/16)*1rem);
+        color: #fff;
+        text-decoration: none;
+        display: block;
+        transition: 0.5s;
+        display: block;
+        border-bottom: 1px solid #fff;
+        padding-bottom: 2px;
+    }
+
+    .mainMenu__link:hover{
+        /*background: rgba(255,255,255, 0.1);*/
+        color:#ff9f00;
+        border-color:#ff9f00;
+    }
+
+
+
+.header__cart{
+    background: #8c6b83;
+}
+
+.header__user{
+    background: #009411;
+}
+
+
+    .titleGroup{
+        display: flex;
+        flex: 0 0 0;
+        min-height: 80px;
+        align-items: center;
+        position: relative;
+        padding: 0 20px;
+        border-right: 1px solid #362035;
+        transition: .5s;
+    }
+
+    .toolbarGroup{
+        flex: 1 0 auto;
+        display: flex;
+    }
+
+
+
+    @media (max-width: 500px){
+
+        .header{
+            flex-direction: column-reverse;
+            align-items: normal;
+            height: unset;
+            min-height: unset;
+            border: unset;
+        }
+
+        .main{
+            padding-top: 50px;
+        }
+
+        .titleGroup{
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        .toolbarGroup{
+            flex: unset;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right:0;
+height: 50px;
+            padding: unset;
+
+        }
+
+
+
+        .header__menu{
+            flex: unset;
+            flex-grow: 1;
+            order: 1;
+        }
+
+
+
+        .header__cart{
+            flex-grow: 1;
+            order: 3;
+        }
+
+        .header__user{
+            flex-grow: 1;
+            order: 2;
+        }
+
+
+    }
+
+
+
+</style>
+
+<div class="main">
+    <header class="header">
+
+        <div class="titleGroup">
+            <div class="header__logo">
+                <img class="header__logo-svg" src="svg/logo-round.svg" alt="The &laquo;Мёд&raquo;">
+            </div>
+            <div class="header__descript"><strong>Производство Дальневосточного мёда</strong> и продажа по всей России</div>
+        </div>
+
+        <div class="toolbarGroup">
+            <div class="header__menu">
+
+                <ul class="mainMenu">
+                    <li class="mainMenu__item"><a class="mainMenu__link" href="#">The Мёд</a></li>
+                    <li class="mainMenu__item"><a class="mainMenu__link" href="#">Доставка</a></li>
+                    <li class="mainMenu__item"><a class="mainMenu__link" href="#">Блог</a></li>
+                    <li class="mainMenu__item"><a class="mainMenu__link" href="#">Пасеки</a></li>
+                    <li class="mainMenu__item"><a class="mainMenu__link" href="#">Контакты</a></li>
+                </ul>
+
+            </div>
+            <div class="header__cart">cart</div>
+            <div class="header__user">user</div>
+        </div>
+
+
+    </header>
+
+
+
+<!-- SVG-sprite  -->
+<div style="display: none;">
+
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+        <symbol id="user-login" viewBox="0 0 50 50">
+            <g>
+                <circle cx="25" cy="15" r="15"/>
+                <path d="M39.984,28.41c-3.421,4.913-8.851,8.104-14.984,8.104s-11.563-3.191-14.983-8.104C3.935,33.329,0,41.169,0,50h50
+                    C50,41.169,46.064,33.329,39.984,28.41z"/>
+            </g>
+        </symbol>
+
+
+
+        <symbol id="shopping-cart"  viewBox="0 0 510 510">
+            <path d="M153,408c-28.05,0-51,22.95-51,51s22.95,51,51,51s51-22.95,51-51S181.05,408,153,408z M0,0v51h51l91.8,193.8L107.1,306
+                    c-2.55,7.65-5.1,17.85-5.1,25.5c0,28.05,22.95,51,51,51h306v-51H163.2c-2.55,0-5.1-2.55-5.1-5.1v-2.551l22.95-43.35h188.7
+                    c20.4,0,35.7-10.2,43.35-25.5L504.9,89.25c5.1-5.1,5.1-7.65,5.1-12.75c0-15.3-10.2-25.5-25.5-25.5H107.1L84.15,0H0z M408,408
+                    c-28.05,0-51,22.95-51,51s22.95,51,51,51s51-22.95,51-51S436.05,408,408,408z"/>
+        </symbol>
+
+        <symbol id="menu-button" viewBox="0 0 459 459">
+            <path d="M0,382.5h459v-51H0V382.5z M0,255h459v-51H0V255z M0,76.5v51h459v-51H0z"/>
+        </symbol>
+
+    </svg>
+
+</div>
+<!-- SVG-sprite  -->
+
+</div>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>toolbar</title>
+    <link rel="stylesheet" href="css/reset.css">
+</head>
+<body>
+
+<style>
+
+    .header{
+        background: #ccc;
+        display: flex;
+        max-height: 80px;
+    }
+
+    /* toolbar */
+    .toolbar{
+        display: flex;
+        flex-grow: 1;
+    }
+
+    .toolbar__item{
+        display: flex;
+        border: 1px solid #000;
+        align-items: center;
+    }
+
+    .toolbar__item-menu{
+        flex-grow: 1;
+    }
+
+    /* svg */
+    .toolbar__icon-menuButton{
+        display: none;
+    }
+
+    /* mainMenu */
+    .mainMenu{
+        flex: 1 0 auto;
+        display: flex;
+        list-style: none;
+        border-left: 1px solid #8c6b83;
+        padding-left: 20px;
+    }
+
+    .mainMenu__item{
+        min-height: 80px;
+        align-items: center;
+        display:flex;
+        padding: 0 20px;
+        background: green;
+    }
+
+    .mainMenu__link{
+        font-size: calc((15/16)*1rem);
+        color: #fff;
+        text-decoration: none;
+        display: block;
+        transition: 0.5s;
+        border-bottom: 1px solid #fff;
+        padding-bottom: 2px;
+    }
+
+    .mainMenu__link:hover{
+        /*background: rgba(255,255,255, 0.1);*/
+        color:#ff9f00;
+        border-color:#ff9f00;
+    }
+
+
+    .widget.toolbar__item-widgetMenu{
+        display: none;
+    }
+
+    /* widget */
+    .widget{
+        display: flex;
+        align-items: center;
+        background: #8c6b83;
+        padding: 10px;
+    }
+
+    .widgetBadge{
+        height: 40px;
+        width: 40px;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        position: relative;
+    }
+
+    .widgetBadge__icon{
+        width: 24px;
+        height: 24px;
+        fill: #3c3a38;
+    }
+
+    .widgetBadge__notification{
+        position: absolute;
+        top: 0;
+        right: -8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 23px;
+        width: 23px;
+        border-radius: 50%;
+        background: #c10032;
+        color: #fff;
+        font-size: calc((14/16)*1rem);
+    }
+
+    .widgetDescript{
+        margin-left: 10px;
+    }
+
+    .widgetDescript__link{
+        color: #fff;
+        font-size: calc((15/16)*1rem);
+        text-decoration: none;
+    }
+
+
+    @media (max-width: 1000px){
+
+        .mainMenu{
+            display: none;
+        }
+
+        .widget.toolbar__item-widgetMenu{
+            display: flex;
+        }
+
+        .widget.toolbar__item-widgetMenu{
+            display: flex;
+        }
+
+
+        .toolbar__item{
+            justify-content: center;
+        }
+
+        .toolbar__item-menu{
+            order: 1;
+        }
+
+        .toolbar__item-user{
+            order: 2;
+            flex-grow: 1;
+        }
+
+        .toolbar__item-cart{
+            order: 3;
+            flex-grow: 1;
+        }
+
+
+
+    }
+
+</style>
+
+    <header class="header">
+
+        <div class="toolbar">
+
+            <div class="toolbar__item toolbar__item-menu">
+
+                <div class="widget toolbar__item-widgetMenu">
+
+                    <div class="widgetBadge">
+                        <svg class="widgetBadge__icon">
+                            <use xlink:href="#menu-button"></use>
+                        </svg>
+                    </div>
+
+                </div>
+
+                <ul class="mainMenu">
+                    <li class="mainMenu__item"><a href="#" class="mainMenu__link">The Мёд</a></li>
+                    <li class="mainMenu__item"><a href="#" class="mainMenu__link">Доставка</a></li>
+                    <li class="mainMenu__item"><a href="#" class="mainMenu__link">Блог</a></li>
+                    <li class="mainMenu__item"><a href="#" class="mainMenu__link">Пасеки</a></li>
+                    <li class="mainMenu__item"><a href="#" class="mainMenu__link">Контакты</a></li>
+                </ul>
+
+            </div>
+
+            <div class="toolbar__item toolbar__item-cart">
+
+                <div class="widget">
+
+                    <div class="widgetBadge">
+                        <svg class="widgetBadge__icon">
+                            <use xlink:href="#shopping-cart"></use>
+                        </svg>
+
+                        <span class="widgetBadge__notification">3</span>
+                    </div>
+
+                    <div class="widgetDescript">
+                        <a href="#/cart/" class="widgetDescript__link">
+                            <span class="shopping-cart-summ">1600</span>&#8381;
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="toolbar__item toolbar__item-user">
+                <div class="widget toolbar__item-widgetCart">
+
+                    <div class="widgetBadge">
+                        <svg class="widgetBadge__icon">
+                            <use xlink:href="#user-login"></use>
+                        </svg>
+
+                        <span class="widgetBadge__notification">!</span>
+                    </div>
+
+                    <div class="widgetDescript">
+                        <a href="#/cart/" class="widgetDescript__link">
+                            Юрий Юрков
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </header>
+
+
+<div class="box">
+
+
+
+</div>
+
+
+
+
+
+<!-- SVG-sprite  -->
+<div style="display: none;">
+
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+        <symbol id="user-login" viewBox="0 0 50 50">
+            <g>
+                <circle cx="25" cy="15" r="15"/>
+                <path d="M39.984,28.41c-3.421,4.913-8.851,8.104-14.984,8.104s-11.563-3.191-14.983-8.104C3.935,33.329,0,41.169,0,50h50
+                    C50,41.169,46.064,33.329,39.984,28.41z"/>
+            </g>
+        </symbol>
+
+
+
+        <symbol id="shopping-cart"  viewBox="0 0 510 510">
+            <path d="M153,408c-28.05,0-51,22.95-51,51s22.95,51,51,51s51-22.95,51-51S181.05,408,153,408z M0,0v51h51l91.8,193.8L107.1,306
+                    c-2.55,7.65-5.1,17.85-5.1,25.5c0,28.05,22.95,51,51,51h306v-51H163.2c-2.55,0-5.1-2.55-5.1-5.1v-2.551l22.95-43.35h188.7
+                    c20.4,0,35.7-10.2,43.35-25.5L504.9,89.25c5.1-5.1,5.1-7.65,5.1-12.75c0-15.3-10.2-25.5-25.5-25.5H107.1L84.15,0H0z M408,408
+                    c-28.05,0-51,22.95-51,51s22.95,51,51,51s51-22.95,51-51S436.05,408,408,408z"/>
+        </symbol>
+
+        <symbol id="menu-button" viewBox="0 0 459 459">
+            <path d="M0,382.5h459v-51H0V382.5z M0,255h459v-51H0V255z M0,76.5v51h459v-51H0z"/>
+        </symbol>
+
+    </svg>
+
+</div>
+<!-- SVG-sprite  -->
+
+</body>
+</html>

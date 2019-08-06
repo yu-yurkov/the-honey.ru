@@ -3,7 +3,6 @@
     flex: 1 0 auto;
     display: flex;
     list-style: none;
-
     border-left: 1px solid #8c6b83;
     padding-left: 20px;
 }
@@ -475,4 +474,22 @@
     color: #fff;
     font-size: calc((15/16)*1rem);
     text-decoration: none;
+}
+
+
+@media (max-width: 1200px) {
+    .dropdown-box__descript{
+        display: none;
+    }
+
+
+    .header__nav li{
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 1000px){
+    .header__nav li{
+        display: none;
+    }
 }
