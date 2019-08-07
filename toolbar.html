@@ -3,14 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>toolbar</title>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
     <link rel="stylesheet" href="css/reset.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 
 <style>
 
+
+    html, body {
+        height: 100%;
+        font-family: roboto;
+    }
+
     .header{
-        background: #ccc;
+        background: #633758;
         display: flex;
         max-height: 80px;
     }
@@ -19,29 +27,25 @@
     .toolbar{
         display: flex;
         flex-grow: 1;
+        position: relative;
     }
 
     .toolbar__item{
         display: flex;
-        border: 1px solid #000;
         align-items: center;
+        position: relative;
     }
 
     .toolbar__item-menu{
         flex-grow: 1;
     }
 
-    /* svg */
-    .toolbar__icon-menuButton{
-        display: none;
-    }
 
     /* mainMenu */
     .mainMenu{
         flex: 1 0 auto;
         display: flex;
         list-style: none;
-        border-left: 1px solid #8c6b83;
         padding-left: 20px;
     }
 
@@ -50,7 +54,6 @@
         align-items: center;
         display:flex;
         padding: 0 20px;
-        background: green;
     }
 
     .mainMenu__link{
@@ -71,15 +74,23 @@
 
 
     .widget.toolbar__item-widgetMenu{
-        display: none;
+          display: none;
     }
 
     /* widget */
     .widget{
         display: flex;
         align-items: center;
-        background: #8c6b83;
         padding: 10px;
+        transition: .5s;
+        position: relative;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .widget:hover{
+        background: rgba(255,255,255, 0.1);
+
     }
 
     .widgetBadge{
@@ -112,6 +123,9 @@
         background: #c10032;
         color: #fff;
         font-size: calc((14/16)*1rem);
+        box-sizing: border-box;
+        font-weight: bold;
+        padding-left: 1px;
     }
 
     .widgetDescript{
@@ -124,29 +138,403 @@
         text-decoration: none;
     }
 
+    /* dropdown */
+    .dropdown{
+        border: 1px solid #593957;
+        position: absolute;
+        top: 90px;
+        right: 0;
+        display: none;
+        width: 350px;
+        background: #fff;
+        -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+        -moz-box-shadow:    0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+        box-shadow:         0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+
+    }
+
+    /**/
+    .slidein {
+        -webkit-animation-duration: .5s;
+        -moz-animation-duration: .5s;
+        animation-duration: .5s;
+        -moz-animation-name: slidein;
+        -webkit-animation-name: slidein;
+        animation-name: slidein;
+        -moz-animation-iteration-count: 1;
+        -webkit-animation-iteration-count: 1;
+        animation-iteration-count: 1;
+        -moz-animation-direction: alternate;
+        -webkit-animation-direction: alternate;
+        animation-direction: alternate;
+        display: block;
+    }
+
+
+    @keyframes slidein {
+        0% {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        60% {
+            opacity: 1;
+            transform: translateY(20px);
+        }
+        80% {
+            transform: translateY(-10px);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+
+    /* userdata */
+    .user-data{
+        background: #f0f4ff;
+        border-bottom: 1px solid #e3e7f2;
+        display: flex;
+        padding: 20px;
+
+    }
+
+    .user-photo{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    .user-photo img{
+        width: 100%;
+        height: auto;
+    }
+
+    .user-info{
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .user-name{
+        font-weight: bold;
+        font-size: calc((16/16)*1rem);
+        margin-bottom: 5px;
+    }
+
+    .user-contacts{
+        color: #787a80;
+        font-size: calc((12/16)*1rem);
+        padding: 2px 0;
+    }
+
+    .header .user-edit-link>a{
+        color: #2e7dff;
+        font-size: calc((12/16)*1rem);
+        text-decoration: underline;
+        margin: 0;
+    }
+
+    .header .user-edit-link{
+        margin-top: 5px;
+    }
+
+    .logout a{
+        display: block;
+        color: #787a80;
+        text-transform: uppercase;
+        font-size: calc((12/16)*1rem);
+        letter-spacing: 5px;
+        padding: 0;
+        line-height: 40px;
+        margin: 0;
+        text-align: center;
+        background: #f0f4ff;
+        border-top: 1px solid #e3e7f2;
+        transition: .5s;
+    }
+
+    .logout a:hover{
+        background-color: #e5ecff;
+    }
+
+    .logout{
+        position: absolute;
+        bottom: 0;
+        left:0;
+        width: 100%;
+    }
+
+    .widget-orders{
+        margin-bottom: 61px;
+    }
+
+    .widget-orders h3{
+        font-weight: bold;
+        font-size: calc((18/16)*1rem);
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .widget-orders p{
+        font-weight: 300;
+        font-size: calc((16/16)*1rem);
+        text-align: center;
+        color: #787a80;
+    }
+
+    .widget-orders a{
+
+        color: #2e7dff;
+        text-decoration: underline;
+        padding: 0;margin: 0;
+        font-size: calc((16/16)*1rem);
+    }
+
+
+
+
+
+
+
+    /* cart preview */
+    .cart-preview{
+        padding-top: 15px;
+    }
+
+    .cart-items-list{
+        overflow: auto;
+        max-height: 300px;
+        box-sizing: border-box;
+    }
+
+    .cart-items-list::-webkit-scrollbar-track
+    {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        border-radius: 10px;
+        background-color: #F5F5F5;
+    }
+
+    .cart-items-list::-webkit-scrollbar
+    {
+        width: 6px;
+        background-color: #F5F5F5;
+    }
+
+    .cart-items-list::-webkit-scrollbar-thumb
+    {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        background-color: #addff3;
+    }
+
+    .cart-item-data{
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        padding: 5px 20px;
+    }
+
+    .cart-item__photo-img{
+        width: 100%;
+        height: auto;
+    }
+
+    .cart-item__photo{
+        width: 60px;
+        height: 60px;
+        min-width: 60px;
+        min-height: 60px;
+        border: 1px solid #f0f4ff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .cart-item__descript{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 10px;
+    }
+
+    .cart-item__title{
+        text-decoration: none;
+        font-size: calc((13/16)*1rem);
+        color: #3c3a38;
+        height: 27px;
+        overflow: hidden;
+    }
+
+    .cart-item__title:hover{
+        color: #c10032;
+    }
+
+    .cart-item__price{
+        font-size: calc((13/16)*1rem);
+        color: #3c3a38;
+        font-weight: bold;
+        padding-top: 5px;
+    }
+
+    .cart-item__quantity{
+        font-size: calc((13/16)*1rem);
+        color: #3c3a38;
+        white-space: nowrap;
+    }
+
+    .cart-item__delete-btn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30px;
+        width: 30px;
+        background: #e3e7f2 url('../i/basket.png') no-repeat center center;
+        border-radius: 2px;
+        transition: .5s;
+        margin-left: 10px;
+    }
+
+    .cart-item__delete-btn:hover{
+        background-color: #c7d6ff;
+    }
+
+    .cart-item__delete-btn:active{
+        background-color: #9ea8c4;
+    }
+
+    .cart-item__delete-icon{
+        fill: #fff;
+        width: 20px;
+        height: 20px;
+
+    }
+
+    /* total */
+    .cart-total{
+        border-top: 1px solid #f49a1f;
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        font-weight: bold;
+        font-size: calc((14/16)*1rem);
+        margin-top: 15px;
+    }
+
+    .cart-total-summ{
+        flex-grow: 1;
+        text-align: right;
+        border-bottom: 1px dotted #bfbfbf;
+    }
+
+    .cart-total-summ>b{
+        background: #fff;
+    }
+
+
+    /* -- кнопка -- */
+    .btn{
+        background: rgb(255,255,255); /* Old browsers */
+        background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(242,242,242,1) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(242,242,242,1) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(242,242,242,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f2f2f2',GradientType=0 ); /* IE6-9 */
+        display: inline-block;
+        border: 1px solid #c1c1c1;
+        font-size: calc((14/16)*1rem);
+        line-height: calc((38/16)*1rem);
+        color: #000;
+        text-decoration: none;
+        padding: 0 10px;
+        border-radius: 5px;
+        text-shadow: 1px 1px 0px rgba(255, 255, 255, 1);
+        box-sizing: border-box;
+    }
+
+
+    .btn:hover, .button.selected{
+        -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+        -moz-box-shadow:    0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+        box-shadow:         0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+        color: #000;
+    }
+
+    .btn:active{
+        background: #f2f2f2;
+        text-shadow: none;
+    }
+
+    .cart-checkout{
+        padding: 0 20px 20px 20px;
+    }
+
+    .cart-checkout-btn{
+        text-align: center;
+    }
+
+    .btn.checkout-btn{
+        background: #c10032;
+        color: #fff;
+        text-shadow: unset;
+        border-radius: 20px;
+        border: unset;
+        font-family: Sybilla-Medium;
+        padding: 0 40px;
+    }
+
+    .dropdown-menu{
+        display: unset;
+        position: unset;
+        background: unset;
+        box-shadow: unset;
+        width: unset;
+        border: unset;
+    }
+
+
+
 
     @media (max-width: 1000px){
 
-        .mainMenu{
+
+
+        .widget.toolbar__item-widgetMenu{
+            display: flex;
+        }
+
+        .widgetDescript{
             display: none;
         }
 
-        .widget.toolbar__item-widgetMenu{
-            display: flex;
+        .widgetBadge{
+            min-height: 40px;
+            min-width: 40px;
+            background: none;
         }
 
-        .widget.toolbar__item-widgetMenu{
-            display: flex;
+        .widgetBadge__icon{
+            fill: #fff;
         }
+
+
 
 
         .toolbar__item{
             justify-content: center;
+            border-left: 1px solid #362035;
+            border-bottom: 1px solid #362035;
+            position: unset;
+        }
+
+        .toolbar__item:first-child{
+            border: none;
         }
 
         .toolbar__item-menu{
             order: 1;
         }
+
+
 
         .toolbar__item-user{
             order: 2;
@@ -158,6 +546,25 @@
             flex-grow: 1;
         }
 
+        /*  */
+        .dropdown-menu{
+            display: none;
+        }
+
+        .dropdown-menu.slidein{
+            display: block;
+            position: absolute;
+        }
+
+        .dropdown{
+            border-top: unset;
+            width: 100%;
+            box-sizing: border-box;
+            top: 60px;
+            box-shadow: unset;
+            background-color: tomato;
+
+        }
 
 
     }
@@ -180,13 +587,25 @@
 
                 </div>
 
-                <ul class="mainMenu">
-                    <li class="mainMenu__item"><a href="#" class="mainMenu__link">The Мёд</a></li>
-                    <li class="mainMenu__item"><a href="#" class="mainMenu__link">Доставка</a></li>
-                    <li class="mainMenu__item"><a href="#" class="mainMenu__link">Блог</a></li>
-                    <li class="mainMenu__item"><a href="#" class="mainMenu__link">Пасеки</a></li>
-                    <li class="mainMenu__item"><a href="#" class="mainMenu__link">Контакты</a></li>
-                </ul>
+
+                <div class="dropdown dropdown-menu">
+
+                    <ul class="mainMenu">
+                        <li class="mainMenu__item"><a href="#" class="mainMenu__link">The Мёд</a></li>
+                        <li class="mainMenu__item"><a href="#" class="mainMenu__link">Доставка</a></li>
+                        <li class="mainMenu__item"><a href="#" class="mainMenu__link">Блог</a></li>
+                        <li class="mainMenu__item"><a href="#" class="mainMenu__link">Пасеки</a></li>
+                        <li class="mainMenu__item"><a href="#" class="mainMenu__link">Контакты</a></li>
+                    </ul>
+
+                </div>
+
+
+
+
+
+
+
 
             </div>
 
@@ -199,7 +618,7 @@
                             <use xlink:href="#shopping-cart"></use>
                         </svg>
 
-                        <span class="widgetBadge__notification">3</span>
+                        <span class="widgetBadge__notification">4</span>
                     </div>
 
                     <div class="widgetDescript">
@@ -210,17 +629,134 @@
 
                 </div>
 
+                <div class="dropdown">
+
+                    <div class="cart-preview">
+
+                        <ul class="cart-items-list">
+
+                            <li class="cart-item">
+
+                                <ul class="cart-item-data">
+                                    <li class="cart-item__photo"><img class="cart-item__photo-img" src="i/lipa.png"></li>
+                                    <li class="cart-item__descript">
+                                        <a href="#" class="cart-item__title">Мёд «Дальневосточный» липовый с ядрами кедрового ореха (взбитый), 300 гр.\12 б., пластик</a>
+                                        <span class="cart-item__price">135.00 &#8381;</span>
+                                    </li>
+                                    <li class="cart-item__quantity">1 шт.</li>
+
+                                    <li class="cart-item__delete">
+                                        <a href="#" class="cart-item__delete-btn">
+                                            <span>
+                                                <svg class="cart-item__delete-icon">
+                                                    <use xlink:href="#delete"></use>
+                                                </svg>
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+
+                            </li>
+
+                            <li class="cart-item">
+
+                                <ul class="cart-item-data">
+                                    <li class="cart-item__photo"><img class="cart-item__photo-img" src="i/lipa.png"></li>
+                                    <li class="cart-item__descript">
+                                        <a href="#" class="cart-item__title">Мёд «Дальневосточный» липовый с ядрами кедрового ореха (взбитый), 300 гр.\12 б., пластик</a>
+                                        <span class="cart-item__price">135.00 &#8381;</span>
+                                    </li>
+                                    <li class="cart-item__quantity">1 шт.</li>
+                                    <li class="cart-item__delete">
+                                        <a href="#" class="cart-item__delete-btn">
+                                            <span>
+                                                <svg class="cart-item__delete-icon">
+                                                    <use xlink:href="#delete"></use>
+                                                </svg>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </li>
+
+                            <li class="cart-item">
+
+                                <ul class="cart-item-data">
+                                    <li class="cart-item__photo"><img class="cart-item__photo-img" src="i/lipa.png"></li>
+                                    <li class="cart-item__descript">
+                                        <a href="#" class="cart-item__title">Мёд «Дальневосточный» липовый с ядрами кедрового ореха (взбитый), 300 гр.\12 б., пластик</a>
+                                        <span class="cart-item__price">135.00 &#8381;</span>
+                                    </li>
+                                    <li class="cart-item__quantity">1 шт.</li>
+                                    <li class="cart-item__delete">
+                                        <a href="#" class="cart-item__delete-btn">
+                                            <span>
+                                                <svg class="cart-item__delete-icon">
+                                                    <use xlink:href="#delete"></use>
+                                                </svg>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </li>
+
+                            <li class="cart-item">
+
+                                <ul class="cart-item-data">
+                                    <li class="cart-item__photo"><img class="cart-item__photo-img" src="i/lipa.png"></li>
+                                    <li class="cart-item__descript">
+                                        <a href="#" class="cart-item__title">Мёд «Дальневосточный» липовый с ядрами кедрового ореха (взбитый), 300 гр.\12 б., пластик</a>
+                                        <span class="cart-item__price">135.00 &#8381;</span>
+                                    </li>
+                                    <li class="cart-item__quantity">1 шт.</li>
+                                    <li class="cart-item__delete">
+                                        <a href="#" class="cart-item__delete-btn">
+                                            <span>
+                                                <svg class="cart-item__delete-icon">
+                                                    <use xlink:href="#delete"></use>
+                                                </svg>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </li>
+
+
+
+
+                        </ul>
+
+                        <ul class="cart-total">
+                            <li class="cart-total-title">Итого:</li>
+                            <li class="cart-total-summ"><b>1350.00 &#8381;</b></li>
+                        </ul>
+
+                        <ul class="cart-checkout">
+                            <li class="cart-checkout-btn"><a href="#" class="btn checkout-btn">Оформить заказ</a></li>
+                        </ul>
+
+
+
+                    </div>
+
+                </div>
+
             </div>
 
             <div class="toolbar__item toolbar__item-user">
-                <div class="widget toolbar__item-widgetCart">
+
+                <div class="widget">
 
                     <div class="widgetBadge">
                         <svg class="widgetBadge__icon">
                             <use xlink:href="#user-login"></use>
                         </svg>
 
-                        <span class="widgetBadge__notification">!</span>
+
                     </div>
 
                     <div class="widgetDescript">
@@ -230,6 +766,36 @@
                     </div>
 
                 </div>
+
+                <div class="dropdown">
+
+                    <div class="user-data">
+
+                        <div class="user-photo"><img src="i/user-photo.png"></div>
+
+                        <ul class="user-info">
+                            <li class="user-name">Юрий Юрков</li>
+                            <li class="user-contacts">+7 (902) 485-76-44</li>
+                            <li class="user-contacts">info@the-honey.ru</li>
+                            <li class="user-edit-link"><a href="#/user/profile/edit/">Редактировать</a></li>
+                        </ul>
+
+                    </div>
+
+                    <div class="widget-orders">
+
+                        <h3>Мои заказы</h3>
+
+                        <p>активных заказов нет,<br> <a href="#">посмотреть архив заказов</a></p>
+
+                    </div>
+
+                    <div class="logout">
+                        <a href="#">Выйти</a>
+                    </div>
+
+                </div>
+
             </div>
 
         </div>
@@ -243,7 +809,35 @@
 
 </div>
 
+<script>
 
+    $( document ).ready(function () {
+
+
+        $('body').on('click','.widget', function (event) {
+
+            event.stopPropagation();
+
+            if ( $(this).siblings(".dropdown").hasClass("slidein")){
+                $('.dropdown').removeClass('slidein');
+            }else{
+                $('.dropdown').removeClass('slidein');
+                $(this).siblings(".dropdown").addClass('slidein');
+            }
+
+        });
+
+        $(document).click( function(event){
+            if( $(event.target).closest(".dropdown").length)
+                return;
+            $(".dropdown").removeClass('slidein');
+            event.stopPropagation();
+        });
+
+
+
+    })
+</script>
 
 
 
@@ -271,6 +865,10 @@
 
         <symbol id="menu-button" viewBox="0 0 459 459">
             <path d="M0,382.5h459v-51H0V382.5z M0,255h459v-51H0V255z M0,76.5v51h459v-51H0z"/>
+        </symbol>
+
+        <symbol id="delete" viewBox="-26 0 512 512">
+            <path d="m441.378906 70.621094h-105.929687v-34.691406c0-19.808594-16.121094-35.929688-35.929688-35.929688h-140.003906c-19.808594 0-35.929687 16.121094-35.929687 35.929688v34.691406h-105.929688c-9.75 0-17.65625 7.894531-17.65625 17.65625 0 9.757812 7.90625 17.652344 17.65625 17.652344h18.40625l14.652344 336.96875c1.679687 38.757812 33.386718 69.101562 72.175781 69.101562h213.257813c38.785156 0 70.488281-30.34375 72.171874-69.101562l14.652344-336.96875h18.40625c9.75 0 17.65625-7.894532 17.65625-17.652344 0-9.761719-7.90625-17.65625-17.65625-17.65625zm-281.863281-35.3125h140.003906l.617188 35.3125h-141.03125zm213.527344 406.070312c-.863281 19.792969-17.066407 35.3125-36.898438 35.3125h-213.257812c-19.828125 0-36.035157-15.519531-36.898438-35.3125l-14.585937-335.449218h316.226562zm0 0"/><path d="m229.515625 406.070312c-9.75 0-17.652344-7.898437-17.652344-17.65625v-211.863281c0-9.757812 7.902344-17.652343 17.652344-17.652343s17.65625 7.894531 17.65625 17.652343v211.863281c0 9.757813-7.90625 17.65625-17.65625 17.65625zm0 0"/><path d="m300.136719 406.070312c-9.75 0-17.652344-7.898437-17.652344-17.65625v-211.863281c0-9.757812 7.902344-17.652343 17.652344-17.652343s17.65625 7.894531 17.65625 17.652343v211.863281c0 9.757813-7.90625 17.65625-17.65625 17.65625zm0 0"/><path d="m158.898438 406.070312c-9.753907 0-17.65625-7.898437-17.65625-17.65625v-211.863281c0-9.757812 7.902343-17.652343 17.65625-17.652343 9.75 0 17.652343 7.894531 17.652343 17.652343v211.863281c0 9.757813-7.902343 17.65625-17.652343 17.65625zm0 0"/>
         </symbol>
 
     </svg>
