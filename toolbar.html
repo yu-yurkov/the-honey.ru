@@ -291,12 +291,6 @@
         font-size: calc((16/16)*1rem);
     }
 
-
-
-
-
-
-
     /* cart preview */
     .cart-preview{
         padding-top: 15px;
@@ -389,7 +383,7 @@
         justify-content: center;
         height: 30px;
         width: 30px;
-        background: #e3e7f2 url('../i/basket.png') no-repeat center center;
+        background: #e3e7f2;
         border-radius: 2px;
         transition: .5s;
         margin-left: 10px;
@@ -496,7 +490,11 @@
 
     @media (max-width: 1000px){
 
-
+        .widget{
+            flex-grow: 1;
+            justify-content: center;
+            padding: 5px;
+        }
 
         .widget.toolbar__item-widgetMenu{
             display: flex;
@@ -507,17 +505,24 @@
         }
 
         .widgetBadge{
-            min-height: 40px;
-            min-width: 40px;
+            min-height: 32px;
+            min-width: 32px;
+            height: 32px;
+            width: 32px;
             background: none;
+        }
+
+        .widgetBadge__notification{
+            height: 20px;
+            width: 20px;
+            font-size: calc((12/16)*1rem);
         }
 
         .widgetBadge__icon{
             fill: #fff;
+            width: 18px;
+            height: 18px;
         }
-
-
-
 
         .toolbar__item{
             justify-content: center;
@@ -533,8 +538,6 @@
         .toolbar__item-menu{
             order: 1;
         }
-
-
 
         .toolbar__item-user{
             order: 2;
@@ -560,12 +563,30 @@
             border-top: unset;
             width: 100%;
             box-sizing: border-box;
-            top: 60px;
+            top: 43px;
             box-shadow: unset;
-            background-color: tomato;
-
+            background: #fff;
         }
 
+        .mainMenu{
+            display: block;
+            background-color: #f0f4ff;
+            padding: unset;
+        }
+
+        .mainMenu__item{
+            padding: 0;
+            min-height: unset;
+            border-bottom: 1px solid #e3e7f2;
+            display: block;
+        }
+
+        .mainMenu__link{
+            color: #2e7dff;
+            display: block;
+            padding: 20px;
+            border-bottom: unset;
+        }
 
     }
 
@@ -599,13 +620,6 @@
                     </ul>
 
                 </div>
-
-
-
-
-
-
-
 
             </div>
 
