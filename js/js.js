@@ -1,7 +1,6 @@
 $( document ).ready(function () {
 
-
-    $('body').on('click','.dropdown-box', function (event) {
+    $('body').on('click','.widget', function (event) {
 
         event.stopPropagation();
 

@@ -3,8 +3,16 @@
 
 @import url('reset.css');
 @import url('main.css');
+@import url('form.css');
 @import url('header.css');
 @import url('footer.css');
+@import url('fonts.css');
+@import url('listing.css');
+@import url('buttons.css');
+@import url('text-content.css');
+@import url('order.css');
+@import url('view.css');
+@import url('blog-preview.css');
 
 
 
@@ -12,9 +20,9 @@
 /*@import url('_view.css');*/
 /*@import url('_blog.css');*/
 /*@import url('_contacts.css');*/
-/*@import url('_text.css');*/
+
 /*@import url('_price.css');*/
-/*@import url('_order.css');*/
+
 /**/
 
 

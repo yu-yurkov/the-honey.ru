@@ -34,6 +34,23 @@ html, body {
     padding-bottom: 20px;
 }
 
+.wrapper{
+    max-width: 1600px;
+    margin: 50px auto;
+    box-sizing: border-box;
+    padding: 0 2.5%;
+}
+
+.h1{
+    font-size: calc((50/16)*1rem);
+    font-family: Sybilla-Ultra;
+    color: #3c3a38;
+    text-align: center;
+    /*padding: calc((50/16)*1rem) 0;*/
+    padding: 10px 30px;
+    border-bottom: 1px solid #e3e7f2;
+}
+
 
 .crumbs{
     font-size: calc((14/16)*1rem);
@@ -42,17 +59,38 @@ html, body {
 }
 
 .crumbs ul{
-    padding: 20px 25px;
+    display: flex;
+    line-height: 34px;
+    margin-left: 20px;
 }
 
-.crumbs li:before {
-    content: '\2192';
-    color: var(--grey50);
-    display: inline;
-    padding: 5px;
+.crumbs a{
+    background: #f0f4ff;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    padding-right: 20px;
+    padding-left: 10px;
 }
 
-.crumbs li:first-child:before {
-    content: "";
-    padding: 0;
+.crumbs a:after{
+    content: '';
+    display: block;
+    background: #fff;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: -26px; right: -95px;
+    transform: rotate(25deg)
+}
+
+.crumbs a:before{
+    content: '';
+    display: block;
+    background: #fff;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: -39px; right: -95px;
+    transform: rotate(-25deg)
 }

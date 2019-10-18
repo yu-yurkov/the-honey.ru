@@ -1,0 +1,15 @@
+.text-content{
+    font-size: calc((20/16)*1rem);
+    line-height: 180%;
+    color: #3c3a38;
+    max-width: 1000px;
+    text-align: justify;
+}
+
+.text-content p{
+    margin-bottom: 30px;
+}
+
+.text-content p:last-child{
+    margin-bottom: unset;
+}

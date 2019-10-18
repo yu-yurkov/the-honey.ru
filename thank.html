@@ -251,15 +251,154 @@
 
     <section class="box">
 
+        <div class="crumbs">
+            <ul class="wrap">
+                <li><a href="/">Главная</a></li>
+                <li>Моя корзина</li>        </ul>
+        </div>
 
-        box
+        <style>
+            .order-thank{
+                text-align: center;
+            }
+
+            .h1-noline{
+                border-bottom: none;
+            }
+
+            .order-place-number{
+                font-size: calc((30/16)*1rem);
+                font-family: Sybilla-Regular;
+                margin-bottom: 60px;
+                margin-top: 10px;
+            }
+
+            .button-order-submit{
+                background: #c10032;
+                font-family: Sybilla-Regular;
+                color: #fff;
+                text-shadow: 1px 0 0 rgba(0, 0, 0, 0.25);
+                font-size: calc((24/16)*1rem);
+                border: 3px solid #ff3569;
+                border-radius: 10px;
+                padding: 10px 40px;
+                box-shadow:         0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+                transition: .25s;
+            }
+
+            .button-order-submit:hover{
+                background-color: #a1002a;
+                color: #fff;
+                border-color: #c10032;
+            }
+
+            .button-order-submit:active{
+                transform: scale(1.05,1.05);
+            }
+
+            .order-btn-descript{
+                font-size: calc((18/16)*1rem);
+                color: #95a2c7;
+                font-family: Sybilla-Regular;
+                margin-top: 15px;
+                margin-bottom: 80px;
+            }
+
+        </style>
+
+        <section class="order-thank">
+
+            <div class="wrapper">
+
+               <h1 class="h1 h1-noline">Спасибо!</h1>
+                <p class="order-place-number">Ваш заказ №155 успешно создан.</p>
+
+                <button type="submit" class="button button-order-submit">Оплатить заказ</button>
+                <p class="order-btn-descript">нажмите чтобы оплатить</p>
 
 
 
+
+
+            </div>
+
+        </section>
+
+
+
+
+        <script type="text/javascript">
+
+            cashback_group = 'max';
+            use_bonuses = localStorage.getItem('basket_use_bonuses')
+            if(use_bonuses && use_bonuses > 0)
+                $('input[name="use_bonuses"]').attr('checked', 'checked');
+
+            $('input[name="use_bonuses"]').on('change', function(){
+                value = $(this).val();
+
+                if($(this).is(':checked')){
+                    localStorage.setItem('basket_use_bonuses', value)
+                } else {
+                    localStorage.setItem('basket_use_bonuses', 0)
+                }
+                recalculate_order(cashback_group);
+            })
+
+            $('a[data-remove-from-basket]').on('click', function(e){
+                product_id = $(this).data('remove-from-basket');
+
+                $.post('/ajax/remove_from_basket/', {product_id: product_id}, function(data){
+                    recalculate_order(cashback_group);
+                    update_basket();
+                })
+
+                $(this).closest('tr').remove();
+
+                items_in_basket = $('#basket_table tr').length;
+                if(items_in_basket <= 1) window.location.reload()
+
+                e.preventDefault();
+            })
+
+            $('[data-action="basket_share"]').on('click', function(){
+                basket_name = '';
+                //basket_name = prompt('Введите название для корзины', '');
+                //if(!basket_name) return false;
+
+
+                $.post('/ajax/basket_share/', {name: basket_name}, function(data){
+                    data = JSON.parse(data);
+                    //console.log(data);
+                    if(data.result == '1'){
+                        // Ок
+                        $.fancybox.open(data.html);
+                    } else {
+                        // Ошибка
+                        alert(data.message)
+                    }
+                })
+            })
+            localStorage.setItem('basket_delivery_type', 2)
+            delivery_type = localStorage.getItem('basket_delivery_type')
+            if(delivery_type && delivery_type == 2)
+                $('input[name="delivery_type"][value="2"]').attr('checked', 'checked');
+
+            $('input[name="delivery_type"]').on('change', function(){
+                delivery_type = $(this).val()
+                localStorage.setItem('basket_delivery_type', delivery_type)
+                recalculate_order(cashback_group);
+            })
+
+
+
+            recalculate_order(cashback_group);
+        </script>
     </section>
 
+
     <footer class="footer">
-       
+
         <ul class="footer__menu">
             <li class="footer__menu-item"><a href="#" class="footer__menu-link">Продукция</a></li>
             <li class="footer__menu-item"><a href="#" class="footer__menu-link">Доставка и оплата</a></li>
@@ -272,28 +411,28 @@
 
         <div class="wrapper">
 
-        <div class="footer__data-collection">
-            Сайт использует файлы cookies и сервис сбора технических данных его посетителей. Продолжая использовать данный ресурс, вы автоматически соглашаетесь с
-            использованием данных технологий. Мы гарантируем безопасность и сохранность ваших данных. <a href="#" class="data-collection-links">Пользовательское соглашение</a> и
-            <a href="#" class="data-collection-links">политика обработки персональных данных</a>.
+            <div class="footer__data-collection">
+                Сайт использует файлы cookies и сервис сбора технических данных его посетителей. Продолжая использовать данный ресурс, вы автоматически соглашаетесь с
+                использованием данных технологий. Мы гарантируем безопасность и сохранность ваших данных. <a href="#" class="data-collection-links">Пользовательское соглашение</a> и
+                <a href="#" class="data-collection-links">политика обработки персональных данных</a>.
+            </div>
+
+            <ul class="footer__details">
+                <li>ИП Юрков Юрий Иванович</li>
+                <li><address>Россия, Приморский край, Чугуевский район, с. Чугуевка, ул. 50 лет Октября 310 б.</address></li>
+                <li>Телефон: +7 (968) 166-44-46, e-mail: <a href=#" class="data-collection-links dcl-nowrap">honey@the-honey.ru</a></li>
+                <li>&copy; &laquo;Тhe Мёд&raquo;, 2010-2019. Все права защищены,использование материалов сайта без одобрения владельца запрещено.</li>
+            </ul>
+
+            <ul class="footer__social">
+                <li><a href="#" class="footer__social-links"><img src="i/facebook.png" alt=""></a></li>
+                <li><a href="#" class="footer__social-links"><img src="i/vk.png" alt=""></a></li>
+                <li><a href="#" class="footer__social-links"><img src="i/instagram.png" alt=""></a></li>
+                <li><a href="#" class="footer__social-links"><img src="i/youtube.png" alt=""></a></li>
+            </ul>
+
         </div>
 
-        <ul class="footer__details">
-            <li>ИП Юрков Юрий Иванович</li>
-            <li><address>Россия, Приморский край, Чугуевский район, с. Чугуевка, ул. 50 лет Октября 310 б.</address></li>
-            <li>Телефон: +7 (968) 166-44-46, e-mail: <a href=#" class="data-collection-links dcl-nowrap">honey@the-honey.ru</a></li>
-            <li>&copy; &laquo;Тhe Мёд&raquo;, 2010-2019. Все права защищены,использование материалов сайта без одобрения владельца запрещено.</li>
-        </ul>
-
-        <ul class="footer__social">
-            <li><a href="#" class="footer__social-links"><img src="i/facebook.png" alt=""></a></li>
-            <li><a href="#" class="footer__social-links"><img src="i/vk.png" alt=""></a></li>
-            <li><a href="#" class="footer__social-links"><img src="i/instagram.png" alt=""></a></li>
-            <li><a href="#" class="footer__social-links"><img src="i/youtube.png" alt=""></a></li>
-        </ul>
-
-        </div>
-        
     </footer>
 
     <!-- SVG-sprite  -->
@@ -333,6 +472,12 @@
 
 </div>
 
+<style>
 
+
+
+</style>
+
+<ul id="ui-id-1" tabindex="0" class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front" style="position: relative; top: -734px; left: 47.0942px; width: 500px; display:none;"><li class="ui-menu-item"><div id="ui-id-38" tabindex="-1" class="ui-menu-item-wrapper">Владивосток, Приморский край, Россия</div></li><li class="ui-menu-item"><div id="ui-id-39" tabindex="-1" class="ui-menu-item-wrapper">Владикавказ, Северная Осетия респ., Россия</div></li><li class="ui-menu-item"><div id="ui-id-40" tabindex="-1" class="ui-menu-item-wrapper">Владимир, Владимирская обл., Россия</div></li><li class="ui-menu-item"><div id="ui-id-41" tabindex="-1" class="ui-menu-item-wrapper ui-state-active">Влаардинген, Южная Голландия, ЮжнаяГолландия, Нидерланды</div></li><li class="ui-menu-item"><div id="ui-id-42" tabindex="-1" class="ui-menu-item-wrapper">Владимир, Иркутская обл., Россия</div></li><li class="ui-menu-item"><div id="ui-id-43" tabindex="-1" class="ui-menu-item-wrapper">Владимиро-Александровское, Приморский край, Россия</div></li><li class="ui-menu-item"><div id="ui-id-44" tabindex="-1" class="ui-menu-item-wrapper">Владимировка, Астраханская обл., Россия</div></li><li class="ui-menu-item"><div id="ui-id-45" tabindex="-1" class="ui-menu-item-wrapper">Владимировка, Костанайская обл., Казахстан</div></li><li class="ui-menu-item"><div id="ui-id-46" tabindex="-1" class="ui-menu-item-wrapper">Владимировка, Краснодарский край, Россия</div></li><li class="ui-menu-item"><div id="ui-id-47" tabindex="-1" class="ui-menu-item-wrapper">Владимировка, Безенчукский р-н, Самарская обл., Россия</div></li></ul>
 </body>
 </html>

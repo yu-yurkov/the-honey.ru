@@ -1,0 +1,181 @@
+
+.product{
+    display: flex;
+}
+
+.product__column{
+    flex-grow: 1;
+    max-width: 50%;
+    min-width: 50%;
+    box-sizing: border-box;
+}
+
+.product__rating{
+    display: flex;
+    font-family: Sybilla-Regular;
+    color: #787a80;
+}
+
+.product__review{
+    padding: 0 20px;
+}
+
+.product__shared{
+    flex-grow: 1;
+    text-align: right;
+}
+
+.product__price-block{
+    display: flex;
+    margin-top: 20px;
+}
+
+.product__price-block .product__column{
+    max-width: unset;
+    min-width: unset;
+
+}
+
+.product__column-notice{
+    border: 1px solid #e3e7f2;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+
+}
+
+.product__price{
+    font-size: calc((36/16)*1rem);
+    font-weight: bold;
+    color: #3c3a38;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.product__buy{
+    text-align: center;
+}
+
+.button-order-submit {
+    background: #c10032;
+    font-family: Sybilla-Regular;
+    color: #fff;
+    text-shadow: 1px 0 0 rgba(0, 0, 0, 0.25);
+    font-size: calc((24/16)*1rem);
+    border: 3px solid #ff3569;
+    border-radius: 10px;
+    padding: 10px 40px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+    transition: .25s;
+}
+
+.product__availability{
+    font-family: Sybilla-Regular;
+    color: #007d06;
+    text-align: center;
+    padding: 10px;
+}
+
+.product__free-shipping{
+    font-family: Sybilla-Regular;
+    text-align: center;
+    padding: 10px;
+}
+
+.product__descript{
+    margin-top: 40px;
+}
+
+.product__descript-item{
+    font-family: Sybilla-Regular;
+    font-size: calc((18/16)*1rem);
+    line-height: 140%;
+    color: #3c3a38;
+}
+
+.photo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo__item{
+    max-width: 100%;
+    height: auto;
+}
+
+.advantage{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.advantage__item {
+    font-size: calc((12/16)*1rem);
+    color: #95a2c7;
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding: 25px 25px 25px 40px;
+
+}
+
+.advantage__item-eco{
+    background-image: url('../i/eco.png');
+}
+
+.advantage__item-elem{
+    background-image: url('../i/elem.png');
+}
+
+.advantage__item-mountain{
+    background-image: url('../i/mountain.png');
+}
+
+.rating{
+    display: flex;
+}
+
+.rating__item{
+    color: #f8a225;
+}
+
+
+.product-features{
+    margin-top: 40px;
+    font-family: Sybilla-Regular;
+    font-size: calc((16/16)*1rem);
+    line-height: 140%;
+    color: #3c3a38;
+}
+
+.features{
+    display: flex;
+    flex-direction: column;
+}
+
+.features__item{
+    display: flex;
+    padding-bottom: 15px;
+}
+
+.features-column{
+    flex-grow: 1;
+    max-width: 50%;
+    min-width: 50%;
+    box-sizing: border-box;
+    line-height: 90%;
+}
+
+.features__item-name{
+    font-weight: bold;
+    border-bottom: 1px dotted #3c3a38;
+
+}
+
+.features__item-title{
+    background: #fff;
+    padding: 4px 4px 4px 0;
+}

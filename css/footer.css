@@ -3,10 +3,11 @@
     padding: 40px 0;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .footer__menu-item{
-    padding: 0 20px;
+    padding: 10px 20px;
 }
 
 .footer__menu-link{
@@ -15,6 +16,7 @@
     display: inline-block;
     border-bottom: 1px solid #2e7dff;
     padding-bottom: 2px;
+    white-space: nowrap;
 }
 
 .footer__menu-link:hover{
@@ -42,6 +44,10 @@
 
 .data-collection-links:hover{
     color: #c10032;
+}
+
+.dcl-nowrap{
+    white-space: nowrap;
 }
 
 .footer__details{
